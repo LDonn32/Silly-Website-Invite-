@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>You're Invited 😎</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f7f7f7;
+            padding: 40px;
+        }
+        #meme {
+            width: 320px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: 0.3s ease;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #yesBtn {
+            background: #28a745;
+            color: white;
+        }
+        #yesBtn:hover {
+            background: #1e8a39;
+        }
+        #noBtn {
+            background: #ff4f4f;
+            color: white;
+            position: absolute;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Wanna come to the pub and gossip?</h1>
+
+    <img id="meme" src="" alt="random meme">
+
+    <p><strong>Location:</strong> The Local Pub 🍺</p>
+    <p><strong>Time:</strong> Friday @ 7pm</p>
+
+    <div style="margin-top: 30px;">
+        <button id="yesBtn" onclick="sayYes()">Yes I'm Coming</button>
+        <button id="noBtn" onmouseover="runAway()">No</button>
+    </div>
+
+    <div id="response"></div>
+
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        // RANDOM MEMES
+        const memes = [
+            "https://i.imgflip.com/30zz5g.jpg",
+            "https://i.imgflip.com/4t0m5.jpg",
+            "https://i.imgflip.com/1bij.jpg",
+            "https://i.imgflip.com/26am.jpg",
+            "https://i.imgflip.com/2wifvo.jpg"
+        ];
+
+        document.getElementById("meme").src = memes[Math.floor(Math.random() * memes.length)];
+
+        // YES BUTTON → fetch funny response + confetti
+        function sayYes() {
+            fetch("/rsvp")
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("response").innerText = data.message;
+
+                    // Confetti blast
+                    confetti({
+                        particleCount: 200,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                });
+        }
+
+        // NO BUTTON → runs away from mouse
+        function runAway() {
+            const btn = document.getElementById("noBtn");
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+    </script>
+
+</body>
+</html>
+

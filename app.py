@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify  # type: ignore[import]
 import random
 
 app = Flask(__name__)
