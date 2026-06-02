@@ -2,6 +2,8 @@
 
 A minimal web app that renders a single invite page from templates. Good for testing local development and simple deployments.
 
+https://silly-website-invite.onrender.com/
+
 **Requirements**
 - **Python**: 3.8+ recommended.
 - **Dependencies**: See [requirements.txt](requirements.txt).
