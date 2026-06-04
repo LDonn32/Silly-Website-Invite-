@@ -6,33 +6,46 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: #ffe6f2; /* soft pink */
+            background: #ffe6f2;
             padding: 40px;
             overflow-x: hidden;
         }
 
-        /* Floating balloons */
+        /* REAL FLOATING BALLOONS (CSS SHAPES) */
         .balloon {
             position: absolute;
             bottom: -150px;
-            width: 80px;
-            animation: floatUp 10s linear infinite;
+            width: 60px;
+            height: 80px;
+            background: #ff66b3;
+            border-radius: 50% 50% 45% 45%;
+            animation: floatUp 8s linear infinite;
             opacity: 0.9;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-120vh) rotate(10deg); }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 25px;
+            background: #ff66b3;
         }
 
-        /* Sparkle animation for random meme */
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-120vh) translateX(20px); }
+        }
+
+        /* Sparkle animation */
         @keyframes sparkle {
             0% { box-shadow: 0 0 10px #ff99cc; }
             50% { box-shadow: 0 0 25px #ff4da6; }
             100% { box-shadow: 0 0 10px #ff99cc; }
         }
 
-        /* Static image (always shown) */
+        /* Static image */
         #mainImage {
             width: 350px;
             border-radius: 15px;
@@ -88,22 +101,23 @@
 </head>
 <body>
 
-    <!-- Floating balloons -->
-    <img src="https://i.imgur.com/7yUvePI.png" class="balloon" style="left: 10%; animation-delay: 0s;">
-    <img src="https://i.imgur.com/7yUvePI.png" class="balloon" style="left: 40%; animation-delay: 3s;">
-    <img src="https://i.imgur.com/7yUvePI.png" class="balloon" style="left: 70%; animation-delay: 6s;">
+    <!-- REAL FLOATING BALLOONS -->
+    <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="balloon" style="left: 40%; animation-delay: 2s; background:#ff99cc;"></div>
+    <div class="balloon" style="left: 70%; animation-delay: 4s; background:#ff4da6;"></div>
 
     <h1>YOU'RE INVITED 🎀</h1>
 
-    <!-- Static image you uploaded -->
-    <img id="mainImage" src="/static/img/your-image.jpeg" alt="Birthday Image">
+    <!-- Static image -->
+    <img id="mainImage" src="/static/30th Birthday Invite Picture.jpeg" alt="Birthday Image">
+    
 
     <h2 style="color:#cc0066;">Laura's 30th Birthday Party 🎉</h2>
 
     <p><strong>Location:</strong> Rody Boland's in Rathmines🍺</p>
     <p><strong>Time:</strong> Saturday 11th of July @ 8pm</p>
 
-    <!-- Random meme below static image -->
+    <!-- Random meme -->
     <img id="meme" src="" alt="random meme">
 
     <div style="margin-top: 30px;">
@@ -157,18 +171,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
