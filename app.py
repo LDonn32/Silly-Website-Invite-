@@ -4,10 +4,10 @@ import random
 app = Flask(__name__)
 
 funny_responses = [
-    "Good. You better show up.",
-    "Excellent choice. Dress fancy.",
+    "Good. You better show up in pink.",
+    "Excellent choice. Dress cute and in pink.",
     "You said yes? Bold of you.",
-    "Perfect. Bring a naggin.",
+    "Perfect. Bring a naggin. Or twelve.",
     "Amazing. I’ll alert the paparazzi."
 ]
 
